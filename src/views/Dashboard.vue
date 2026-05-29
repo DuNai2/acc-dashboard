@@ -132,10 +132,6 @@
           </div>
         </div>
       </div>
-
-      <div class="center-action">
-        <router-link to="/events" class="btn-primary">Все события →</router-link>
-      </div>
     </section>
 
 
@@ -190,20 +186,18 @@
         <!-- Legal Text -->
         <div class="legal-text">
           <p>
-            All other trademarks are property of their respective Owners. Developed by KUNOS Simulazioni Srl.
-            The Assetto Corsa's logo is a registered trademark of KUNOS Simulazioni Srl. FMOD Studio, copyright Firelight Technologies Pty. Ltd., 2012-2016.
-            Manufacturers, cars, names, brands and associated imagery featured in this game in some cases include trademarks and/or copyrighted
-            materials of their respective owners...
+            Все остальные торговые марки являются собственностью соответствующих владельцев. Разработано компанией KUNOS Simulazioni Srl. Логотип Assetto Corsa является зарегистрированной торговой маркой KUNOS Simulazioni Srl. Студия FMOD, авторское право Firelight Technologies Pty. Ltd., 2012-2016. Производители, автомобили, названия, бренды и связанные с ними изображения, представленные в этой игре, в некоторых случаях являются товарными знаками и/или материалами, защищенными авторским правом соответствующих владельцев...
+
+            Опубликовано по лицензии 505 Games. 505 Games и логотип 505 Games являются зарегистрированными товарными знаками компании 505 Games S.p.A и/или ее аффилированных лиц.
           </p>
           <p style="margin-top: 1rem;">
-            Published under license by 505 Games. 505 Games and the 505 Games logo are registered trademarks of 505 Games S.p.A and/or its Affiliates.
-          </p>
+            Опубликовано по лицензии компанией 505 Games. 505 Games и логотип 505 Games являются зарегистрированными товарными знаками компании 505 Games S.p.A и/или ее аффилированных лиц.          </p>
         </div>
 
         <!-- Нижняя часть -->
         <div class="footer-bottom">
           <a href="#" class="privacy-link">PRIVACY POLICY</a>
-          <p class="fan-note">This is a fan project. Not affiliated with Kunos Simulazioni or 505 Games.</p>
+          <p class="fan-note">Это фанатский проект. Не связан с Kunos Simulazioni или 505 Games..</p>
         </div>
 
       </div>

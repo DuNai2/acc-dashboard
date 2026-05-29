@@ -22,28 +22,28 @@
 
           <div class="track-stats">
             <div class="track-stat">
-              <span class="track-stat-icon">📏</span>
+              <span class="track-stat-icon"><img src = "../assets/icons/line.png"></span>
               <div>
                 <span class="track-stat-label">LENGTH</span>
                 <span class="track-stat-value">{{ track.length }} KM</span>
               </div>
             </div>
             <div class="track-stat">
-              <span class="track-stat-icon">↩️</span>
+              <span class="track-stat-icon"><img src = "../assets/icons/corners.png"></span>
               <div>
                 <span class="track-stat-label">CORNERS</span>
                 <span class="track-stat-value">{{ track.corners }}</span>
               </div>
             </div>
             <div class="track-stat">
-              <span class="track-stat-icon">⛰️</span>
+              <span class="track-stat-icon"><img src = "../assets/icons/elevation.png"></span>
               <div>
                 <span class="track-stat-label">ELEVATION</span>
                 <span class="track-stat-value">{{ track.elevation }} M</span>
               </div>
             </div>
             <div class="track-stat">
-              <span class="track-stat-icon">⏱️</span>
+              <span class="track-stat-icon"><img src = "../assets/icons/time.png"></span>
               <div>
                 <span class="track-stat-label">RECORD</span>
                 <span class="track-stat-value">{{ track.lapRecord }}</span>
@@ -88,18 +88,22 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useACCStore } from '../stores/acc'
 
 const store = useACCStore()
 
 function selectTrack(track) {
   store.changeTrack(track.name)
-  alert(`🏁 Selected: ${track.name}\n\n📊 Length: ${track.length} km\n🔄 Corners: ${track.corners}\n⏱️ Record: ${track.lapRecord}\n\n${track.description}`)
+  alert(`✅ Выбран трек: ${track.name}\n\n📍 ${track.country} • ${track.length} км • ${track.corners} поворотов`)
 }
 
 function handleImageError(e) {
   e.target.src = 'https://via.placeholder.com/400x200/1a1a1a/00e676?text=' + encodeURIComponent(e.target.alt || 'CIRCUIT')
 }
+onMounted(() => {
+  store.loadDashboardData()
+})
 </script>
 
 <style scoped>
@@ -235,6 +239,8 @@ function handleImageError(e) {
 
 .track-stat-icon {
   font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
 }
 
 .track-stat-label {
@@ -325,8 +331,20 @@ function handleImageError(e) {
 }
 
 .btn-full {
+  margin-top: auto !important;
   width: 100%;
-  text-align: center;
-  margin-top: 0.5rem;
+  padding: 1rem;
+  background: white;
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 3px;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+.btn-full:hover {
+  background: #ff3333;
+  transform: translateY(-2px);
 }
 </style>

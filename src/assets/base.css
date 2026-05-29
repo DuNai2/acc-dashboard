@@ -88,31 +88,3 @@ body {
   gap: 1.5rem;
   padding: 2rem;
 }
-
-/* Кнопки */
-.btn {
-  background: white;
-  color: var(--bg-primary);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: inherit;
-}
-
-.btn:hover {
-  box-shadow: 0 0 20px var(--accent-glow);
-  transform: scale(1.05);
-}
-
-/* Анимация спидометра */
-.stat-value {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent);
-  font-family: 'Courier New', monospace;
-  text-shadow: 0 0 15px var(--accent-glow);
-}

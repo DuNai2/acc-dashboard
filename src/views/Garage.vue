@@ -29,9 +29,6 @@
         <div class="car-info">
           <h3 class="car-name">{{ car.name }}</h3>
           <p class="car-brand">{{ car.brand }} • {{ car.engine }}</p>
-
-
-
           <div class="car-characteristics">
             <h4>CAR CHARACTERISTICS</h4>
 
@@ -93,17 +90,20 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useACCStore } from '../stores/acc'
 
+// Инициализируем стор ровно один раз
 const store = useACCStore()
 const activeFilter = ref('All')
 
+// Вычисляем список брендов
 const brands = computed(() => {
   const allBrands = store.cars.map(c => c.brand)
   return ['All', ...new Set(allBrands)]
 })
 
+// Фильтруем машины
 const filteredCars = computed(() => {
   if (activeFilter.value === 'All') return store.cars
   return store.cars.filter(c => c.brand === activeFilter.value)
@@ -116,6 +116,11 @@ function selectCar(car) {
 function handleImageError(e) {
   e.target.src = 'https://via.placeholder.com/400x200/1a1a1a/00e676?text=' + encodeURIComponent(e.target.alt || 'GT3')
 }
+
+// Запускаем загрузку данных при открытии страницы
+onMounted(() => {
+  store.loadDashboardData()
+})
 </script>
 
 <style scoped>
@@ -177,13 +182,7 @@ function handleImageError(e) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   gap: 2.5rem;
-}
-
-/* Сетка машин */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 2rem;
+  align-items: stretch;
 }
 
 /* Карточка машины */
@@ -191,6 +190,15 @@ function handleImageError(e) {
   padding: 0;
   overflow: hidden;
   transition: all 0.3s ease;
+  min-height: 780px;
+}
+
+/* Информация */
+.car-info {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 1.5rem;
 }
 
 .car-card:hover {
@@ -231,11 +239,6 @@ function handleImageError(e) {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-}
-
-/* Информация */
-.car-info {
-  padding: 1.5rem;
 }
 
 .car-name {
@@ -358,8 +361,20 @@ function handleImageError(e) {
 }
 
 .btn-full {
+  margin-top: auto;
   width: 100%;
-  text-align: center;
-  margin-top: 0.5rem;
+  padding: 1rem;
+  background: white;
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 3px;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+.btn-full:hover {
+  background: #ff3333;
+  transform: translateY(-2px);
 }
 </style>
